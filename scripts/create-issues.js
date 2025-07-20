@@ -241,9 +241,9 @@ function createLabels() {
   console.log('Creating GitHub labels...');
   labels.forEach(label => {
     try {
-      execSync(\`gh label create "\${label.name}" --description "\${label.description}" --color "\${label.color}"\`, { stdio: 'inherit' });
+      execSync(`gh label create "${label.name}" --description "${label.description}" --color "${label.color}"`, { stdio: 'inherit' });
     } catch (error) {
-      console.log(\`Label \${label.name} already exists or error occurred\`);
+      console.log(`Label ${label.name} already exists or error occurred`);
     }
   });
 }
@@ -252,16 +252,16 @@ function createIssues() {
   console.log('Creating GitHub issues...');
   issues.forEach((issue, index) => {
     const labelsString = issue.labels.join(',');
-    const bodyFile = \`/tmp/issue-body-\${index}.md\`;
+    const bodyFile = `/tmp/issue-body-${index}.md`;
     
     // Write body to temporary file
     require('fs').writeFileSync(bodyFile, issue.body);
     
     try {
-      execSync(\`gh issue create --title "\${issue.title}" --body-file "\${bodyFile}" --label "\${labelsString}"\`, { stdio: 'inherit' });
-      console.log(\`✅ Created issue: \${issue.title}\`);
+      execSync(`gh issue create --title "${issue.title}" --body-file "${bodyFile}" --label "${labelsString}"`, { stdio: 'inherit' });
+      console.log(`✅ Created issue: ${issue.title}`);
     } catch (error) {
-      console.error(\`❌ Failed to create issue: \${issue.title}\`);
+      console.error(`❌ Failed to create issue: ${issue.title}`);
       console.error(error.message);
     }
     
