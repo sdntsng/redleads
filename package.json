@@ -1,0 +1,39 @@
+{
+  "name": "redleads",
+  "version": "0.1.0",
+  "description": "AI-Powered Reddit Lead Generation and Engagement Platform",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd backend && npm run build && cd ../frontend && npm run build",
+    "start": "cd backend && npm run start",
+    "test": "cd backend && npm test && cd ../frontend && npm test",
+    "migrate": "cd backend && npm run migrate",
+    "seed": "cd backend && npm run seed",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdntsng/redleads.git"
+  },
+  "keywords": [
+    "reddit",
+    "lead-generation",
+    "ai",
+    "monitoring",
+    "automation",
+    "marketing"
+  ],
+  "author": "Siddhant Singh",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ]
+}
